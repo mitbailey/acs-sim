@@ -10,6 +10,7 @@
  */
 #include <bessel.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * @brief Coefficients for the Bessel filter, calculated using calculateBessel().
@@ -37,7 +38,7 @@ void calculateBessel(float arr[], int size, int order, float freq_cutoff)
     if (order > 5) // max 5th order
         order = 5;
     float *coeff = (float *)calloc(order + 1, sizeof(float)); // declare array to hold numeric coeff
-    if (__glibc_unlikely(coeff == NULL))
+    if (coeff == NULL)
     {
         perror("[BESSEL] Coeff alloc failed, Bessel coeffs untrusted");
         return;
